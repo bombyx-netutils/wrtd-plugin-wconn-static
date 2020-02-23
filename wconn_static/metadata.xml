@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin>
   <wan-connection id="static">
-    <description>WAN interface by static configuration</description>
+    <description>WAN connection by static configuration</description>
     <filename>plugin.py</filename>
     <classname>PluginObject</classname>
   </wan-connection>

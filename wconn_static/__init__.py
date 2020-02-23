@@ -6,16 +6,11 @@ import logging
 
 class _PluginObject:
 
-    def init2(self, cfg, api):
+    def start(self, cfg, api):
         self.cfg = cfg
         self.api = api
         self.logger = logging.getLogger(self.__module__ + "." + self.__class__.__name__)
         self.bAlive = False
-
-    def get_interface(self):
-        return "eth0"
-
-    def start(self):
         self.logger.info("Started.")
 
     def stop(self):
