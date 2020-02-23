@@ -31,7 +31,7 @@ class _PluginObject:
                 "prefix": curCfg["prefix"],
             }
             if "gateway" in curCfg:
-                ret["gateway"] = curCfg["gateways"]
+                ret["gateway"] = curCfg["gateway"]
             if "nameservers" in curCfg:
                 ret["nameservers"] = curCfg["nameservers"]
             if "routes" in curCfg:
