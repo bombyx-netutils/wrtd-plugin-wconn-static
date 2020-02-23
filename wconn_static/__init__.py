@@ -66,7 +66,7 @@ class _PluginObject:
     def interface_appear(self, ifname):
         curCfg = self.cfg["main"]
         if ifname == "eth0":
-            ip = self.cfg["prefix"].split("/")[0]
+            ip = curCfg["prefix"].split("/")[0]
             bnet = ipaddress.IPv4Network(curCfg["prefix"], strict=False)
             with pyroute2.IPRoute() as ipp:
                 idx = ipp.link_lookup(ifname="eth0")[0]
