@@ -2,6 +2,8 @@
 # -*- coding: utf-8; tab-width: 4; indent-tabs-mode: t -*-
 
 import logging
+import pyroute2
+import ipaddress
 
 
 class _PluginObject:
@@ -22,6 +24,13 @@ class _PluginObject:
     def interface_appear(self, ifname):
         curCfg = self.cfg["main"]
         if ifname == "eth0":
+            ip = curCfg["prefix"].split("/")[0]
+            bnet = ipaddress.IPv4Network(curCfg["prefix"], strict=False)
+            with pyroute2.IPRoute() as ipp:
+                idx = ipp.link_lookup(ifname=ifname)[0]
+                ipp.link("set", index=idx, state="up")
+                ipp.addr("add", index=idx, address=ip, mask=bnet.prefixlen, broadcast=str(bnet.broadcast_address))
+
             ret = {
                 "prefix": curCfg["prefix"],
             }
