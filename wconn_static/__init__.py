@@ -20,7 +20,7 @@ class _PluginObject:
             self.bAlive = False
             self.api.deactivate_interface("eth0")
             with pyroute2.IPRoute() as ipp:
-                idx = ipp.link_lookup(ifname="ifname")[0]
+                idx = ipp.link_lookup(ifname="eth0")[0]
                 ipp.link("set", index=idx, state="down")
                 ipp.flush_addr(index=idx)
         self.logger.info("Stopped.")
